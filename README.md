@@ -5,12 +5,12 @@
 |nickname|string|null: , add_index: true|
 |email|string|null: false, add_index: true|
 |password|integer|null: false, add_index: true|
-|group_id|references|null: false, foreign_key: true|
+|group_id|integer|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :member
 - has_many :messages
-- has_many :groups
+- has_many :groups through: :members
 
 
 
@@ -19,8 +19,8 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|references|null: false, foreign_key: true|
-|group_id|references|null: false, foreign_key: true|
+|user|references|null: false, foreign_key: true|
+|group|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :group
@@ -39,7 +39,7 @@
 - has_many :members
 - has_many :messages
 - has_many :users
-
+- accepts_nested_attributes_for :members
 
 
 
@@ -54,4 +54,4 @@
 
 ### Association
 - belongs_to :user
-- has_many :groups
+- belongs_to :group
