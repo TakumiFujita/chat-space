@@ -23,7 +23,7 @@
 |group_id|integer|null: false, foreign_key: true|
 
 ### Association
-- has_many :groups
+- belongs_to :groups
 - belongs_to :users
 
 
