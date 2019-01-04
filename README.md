@@ -5,7 +5,7 @@
 |nickname|string|null: , add_index: true|
 |email|string|null: false, add_index: true|
 |password|integer|null: false, add_index: true|
-|group_id|integer|null: false, foreign_key: true|
+|group_id|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :member
@@ -19,8 +19,8 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
-|group_id|integer|null: false, foreign_key: true|
+|user_id|references|null: false, foreign_key: true|
+|group_id|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :group
@@ -49,8 +49,8 @@
 |------|----|-------|
 |body|string||
 |image|integer|null: false|
-|user_id|integer|null: false, foreign_key: true|
-|group_id|integer|null: false, foreign_key: true|
+|user_id|references|null: false, foreign_key: true|
+|group_id|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
