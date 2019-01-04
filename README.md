@@ -1,24 +1,52 @@
-# README
+## Usersテーブル
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+|Column|Type|Options|
+|------|----|-------|
+|nickname|string|null: , add_index: true|
+|e-mail|string|null: false, add_index:true|
+|password|integer|null: false, add_index:true|
 
-Things you may want to cover:
+### Association
+- belongs_to :member
+- has_many :messages
 
-* Ruby version
 
-* System dependencies
 
-* Configuration
 
-* Database creation
+## membersテーブル
 
-* Database initialization
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false, foreign_key: true|
+|group_id|integer|null: false, foreign_key: true|
 
-* How to run the test suite
+### Association
+- belongs_to :group
+- has_many :users
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
 
-* ...
+
+## grounpsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+
+### Association
+- has_many :members
+
+
+
+
+## messagesテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|body|string|null: false|
+|image|integer|null: false|
+|user_id|integer|null: false, foreign_key: true|
+|group_id|integer|null: false, foreign_key: true|
+
+### Association
+- belongs_to :user
