@@ -1,0 +1,20 @@
+.side-content
+
+  .side-content_user
+    .side-content_user-content
+      .side-content_user-content-name
+        = current_user.name
+      / %i.fas.fa-edit
+      =link_to new_group_path do
+        = fa_icon 'edit', class: 'icon'
+      = link_to edit_user_path(current_user) do
+        = fa_icon 'cog', class: 'icon'
+
+  .side-content_group
+    - current_user.groups.each do |group|
+      .side-content_group-list
+        = link_to group_messages_path(group) do
+          .side-content_group-list-name
+            = group.name
+          .side-content_group-list-message
+            メッセージはまだありません。
