@@ -1,0 +1,18 @@
+.notification {
+  position:absolute;
+  z-index:10;
+  display:inline;
+  height:25px;
+  width:100vw;
+  color:$white;
+  text-align:center;
+
+  .notice {
+    background-color:$light-blue;
+  }
+
+  .alert {
+    background-color: $alert_orange;
+  }
+
+}
