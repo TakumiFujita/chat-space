@@ -3,8 +3,12 @@
   .side-content_user
     .side-content_user-content
       .side-content_user-content-name  takumi
-      %i.fas.fa-edit
-      %i.fas.fa-cog
+      / %i.fas.fa-edit
+      = link_to do
+        = fa_icon 'edit'
+        / %i.fas.fa-cog
+      = link_to edit_user_path(current_user) do
+        = fa_icon 'cog'
 
   .side-content_group
     .side-content_group-list
