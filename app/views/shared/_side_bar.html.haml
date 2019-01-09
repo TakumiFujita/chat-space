@@ -4,7 +4,6 @@
     .side-content_user-content
       .side-content_user-content-name
         = current_user.name
-      / %i.fas.fa-edit
       =link_to new_group_path do
         = fa_icon 'edit', class: 'icon'
       = link_to edit_user_path(current_user) do
