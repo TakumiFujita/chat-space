@@ -1,0 +1,9 @@
+.main-content_body_list-message
+  .main-content_body_list-message-name
+    = message.user.name
+  .main-content_body_list-message-time
+    =message.created_at.strftime("%Y/%m/%d %H:%M")
+  .main-content_body_list-message-text
+    - if message.content.present?
+      %p= message.content
+    = image_tag message.image.url if message.image.present?

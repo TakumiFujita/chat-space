@@ -3,22 +3,35 @@
   .main-content_header
     .main-content_header-group
       .main-content_header-group-name グループ
-      %a.main-content_header-group-edit-btn  edit
-    .main-content_header-members  MEMBER: takumi
+      = link_to 'Edit', '/groups/:id/edit',class: "main-content_header-group-edit-btn"
+    .main-content_header-members
+      MEMBER:
+      - @group.users.each do |user|
+        = user.name
 
   .main-content_body
     .main-content_body_list
-      .main-content_body_list-message
-        .main-content_body_list-message-name takumi
-        .main-content_body_list-message-time  19/1/5
-        .main-content_body_list-message-text  text
-      .main-content_body_list-message
-        .main-content_body_list-message-name takumi
-        .main-content_body_list-message-time  19/1/5
-        .main-content_body_list-message-text  text
+      = render @messages
+      / .main-content_body_list-message
+      /   .main-content_body_list-message-name takumi
+      /   .main-content_body_list-message-time  19/1/5
+      /   .main-content_body_list-message-text  text
+      / .main-content_body_list-message
+      /   .main-content_body_list-message-name takumi
+      /   .main-content_body_list-message-time  19/1/5
+      /   .main-content_body_list-message-text  text
 
   .main-content_footer
     .main-content_footer_body
-      .main-content_footer_body_message  type a message
-      %i.far.fa-image
-      .main-content_footer_body_submit-btn  send
+      =form_for [@group, @message] do |f|
+        .main-content_footer_body_message
+          =f.text_field :content, class: 'main-content_footer_body_message-area', placeholder: 'type a message'
+          / .main-content_footer_body_message  type a message
+          / %i.far.fa-image
+          %label.upload-label{for: "upload-icon"}
+            %i.fa.fa-image
+            = f.file_field :image, id: "upload-icon"
+          / = fa_icon 'image'
+        .main-content_footer_body_submit-btn
+          =f.submit 'Send', class: 'main-content_footer_body_submit-btn-area'
+          / .main-content_footer_body_submit-btn  send
