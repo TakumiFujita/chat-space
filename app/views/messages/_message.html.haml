@@ -2,7 +2,7 @@
   .main-content_body_list-message-name
     = message.user.name
   .main-content_body_list-message-time
-    = message.simple_time
+    = simple_time(message.created_at)
   .main-content_body_list-message-text
     - if message.content.present?
       %p= message.content
