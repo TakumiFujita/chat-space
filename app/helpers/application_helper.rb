@@ -1,5 +1,5 @@
 module ApplicationHelper
-  def simple_time(message)
-    message.created_at.to_s(:default)
-  end
+  # def simple_time(time)
+  #   time.to_s(:default)
+  # end
 end

@@ -47,7 +47,6 @@ $(function(){
       $('.main-content_body_list').append(html);
       $('.main-content_footer_body_message-area').val('')
       $('#upload-icon').val('');
-      // $('file')[0].reset();
       $(".main-content_footer_body_submit-btn-area").prop("disabled", false);
       $('.main-content_body_list').animate({scrollTop: $('.main-content_body_list')[0].scrollHeight}, 'fast');
     })

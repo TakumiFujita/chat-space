@@ -3,7 +3,7 @@
   .main-content_header
     .main-content_header-group
       .main-content_header-group-name グループ
-      = link_to 'Edit', 'edit_group_path',class: "main-content_header-group-edit-btn"
+      = link_to 'Edit', edit_group_path(@group),class: "main-content_header-group-edit-btn"
     .main-content_header-members
       MEMBER:
       - @group.users.each do |user|
