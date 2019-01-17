@@ -2,7 +2,8 @@
 
   .main-content_header
     .main-content_header-group
-      .main-content_header-group-name グループ
+      .main-content_header-group-name
+        = @group.name
       = link_to 'Edit', edit_group_path(@group),class: "main-content_header-group-edit-btn"
     .main-content_header-members
       MEMBER:
