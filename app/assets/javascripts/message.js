@@ -32,7 +32,6 @@ $(function(){
     .done(function(data){
       if (data.length !==0 ) {
         var html = buildHTML(data);
-        console.log(html)
         $('.main-content_body_list').append(html);
       }
       $('.main-content_footer_body_message-area').val('')
@@ -52,22 +51,6 @@ $(function(){
       }
     });
 
-    // function update(){
-    //   if ($('.main-content_body_list-message')[0]){
-    //     var message_id = $('.main-content_body_list-message:last').data('message-id');
-
-    //   } else {
-    //    var message_id = 0
-    //   }
-    //   $.ajax({
-    //     url: location.href,
-    //     type: 'GET',
-    //     data: {
-    //       message: {id: message_id}
-    //     },
-    //     dataType: 'json'
-    //   })
-
  function update(){
       var message_id = $('.main-content_body_list-message')[0]? $('.main-content_body_list-message:last').data('message-id'): 0
     $.ajax({
@@ -80,13 +63,10 @@ $(function(){
     })
 
       .always(function(data){
-
         data.forEach(function(data){
           var html = buildHTML(data);
         $('.main-content_body_list').append(html);
           });
-
       });
-
     }
 });
