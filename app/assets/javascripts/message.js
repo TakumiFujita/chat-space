@@ -45,8 +45,10 @@ $(function(){
             contentType: false
         })
     .done(function(data){
-      var html = buildHTML(data);
-      $('.main-content_body_list').append(html);
+      if (data.length !==0 ) {
+        var html = buildHTML(data);
+        $('.main-content_body_list').append(html);
+      }
       $('.main-content_footer_body_message-area').val('')
       $('#upload-icon').val('');
       $(".main-content_footer_body_submit-btn-area").prop("disabled", false);
@@ -64,27 +66,41 @@ $(function(){
       }
     });
 
-    function update(){
-      if ($('.main-content_body_list-message')[0]){
-        var message_id = $('.main-content_body_list-message:last').data('message-id');
+    // function update(){
+    //   if ($('.main-content_body_list-message')[0]){
+    //     var message_id = $('.main-content_body_list-message:last').data('message-id');
 
-      } else {
-       var message_id = 0
-      }
-      $.ajax({
-        url: location.href,
-        type: 'GET',
-        data: {
-          message: {id: message_id}
-        },
-        dataType: 'json'
-      })
+    //   } else {
+    //    var message_id = 0
+    //   }
+    //   $.ajax({
+    //     url: location.href,
+    //     type: 'GET',
+    //     data: {
+    //       message: {id: message_id}
+    //     },
+    //     dataType: 'json'
+    //   })
+
+ function update(){
+      var message_id = $('.main-content_body_list-message')[0]? $('.main-content_body_list-message:last').data('message-id'): 0
+    $.ajax({
+      url: location.href,
+      type: 'GET',
+      data: {
+        message: {id: message_id}
+      },
+      dataType: 'json'
+    })
 
       .always(function(data){
-        $.each(data, function(i,data){
+
+        data.forEach(function(data){
           var html = buildHTML(data);
         $('.main-content_body_list').append(html);
           });
+
       });
+
     }
 });
