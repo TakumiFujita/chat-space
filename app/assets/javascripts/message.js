@@ -1,6 +1,5 @@
 $(function(){
   function buildHTML(message){
-    if (message.image) {
     var html = `
     <div class = "main-content_body_list-message" data-message-id = "${message.id}">
       <div class = "main-content_body_list-message-name">
@@ -11,26 +10,12 @@ $(function(){
       </div>
       <div class = "main-content_body_list-message-text">
       <p>${message.content}</p>
-      <img src="${message.image}">
       </div>
     </div>`
-    return html;
-  }
+    var image = `<img src="${message.image}">`;
+    var html = message.image? html+image : html;
 
-    else {
-    var html = `<div class = "main-content_body_list-message" data-message-id="${message.id}">
-                  <div class = "main-content_body_list-message-name">
-                  ${message.user_name}
-                  </div>
-                  <div class = "main-content_body_list-message-time">
-                  ${message.created_at}
-                  </div>
-                  <div class = "main-content_body_list-message-text">
-                  <p>${message.content}</p>
-                  </div>
-                  </div>`
     return html;
-  }
 }
   $('.new_message').on('submit', function(e){
     e.preventDefault();
@@ -47,6 +32,7 @@ $(function(){
     .done(function(data){
       if (data.length !==0 ) {
         var html = buildHTML(data);
+        console.log(html)
         $('.main-content_body_list').append(html);
       }
       $('.main-content_footer_body_message-area').val('')
