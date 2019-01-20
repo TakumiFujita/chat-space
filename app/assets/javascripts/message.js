@@ -1,4 +1,4 @@
-$(function(){
+$(document).on("turbolinks:load", function(){
   function buildHTML(message){
     var html = `
     <div class = "main-content_body_list-message" data-message-id = "${message.id}">
