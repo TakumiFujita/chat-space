@@ -1,5 +1,6 @@
 $(document).on("turbolinks:load", function(){
   function buildHTML(message){
+    // console.log(message.user_name);
     var html = `
     <div class = "main-content_body_list-message" data-message-id = "${message.id}">
       <div class = "main-content_body_list-message-name">
@@ -62,11 +63,21 @@ $(document).on("turbolinks:load", function(){
       dataType: 'json'
     })
 
-      .always(function(data){
-        data.forEach(function(data){
-          var html = buildHTML(data);
+    .done(function(data){
+      console.log(data);
+      if (data.length !==0 ) {
+        // ここでのdataは配列なので、eachで回してすべて描画する
+        data.forEach(function(message){
+        var html = buildHTML(message);
         $('.main-content_body_list').append(html);
-          });
-      });
-    }
+       })
+      }
+      $('.main-content_body_list').animate({scrollTop: $('.main-content_body_list')[0].scrollHeight}, 'fast');
+    })
+    .fail(function(){
+      alert('error');
+      $(".main-content_footer_body_submit-btn-area").prop("disabled", false);
+    })
+
+  }
 });
