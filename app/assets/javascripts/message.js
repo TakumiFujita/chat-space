@@ -21,7 +21,7 @@ $(document).on("turbolinks:load", function(){
   $('.new_message').on('submit', function(e){
     e.preventDefault();
     var formData = new FormData(this);
-    var url = $(this).attr('action')
+    var url = $(this).attr('action');
     $.ajax({
             url: url,
             type: 'POST',
@@ -64,7 +64,6 @@ $(document).on("turbolinks:load", function(){
     })
 
     .done(function(data){
-      console.log(data);
       if (data.length !==0 ) {
         // ここでのdataは配列なので、eachで回してすべて描画する
         data.forEach(function(message){
